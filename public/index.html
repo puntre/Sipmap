@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Water Dispenser Finder</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1> Community Water Dispenser Finder</h1>
+    </header>
+
+    <main class="dashboard">
+        <section class="map-section">
+            <div id="map"></div>
+        </section>
+
+        <section class="sidebar">
+            <div id="feedback-message" class="hidden"></div>
+            <div id="loading-indicator" class="hidden">Loading...</div>
+
+            <div class="form-card">
+                <h2>Add a Dispenser</h2>
+                <form id="add-dispenser-form">
+                    <div class="form-group">
+                        <label for="address-search">Search Address</label>
+                        <div class="search-container">
+                            <input type="text" id="address-search" placeholder="Type to find location...">
+                            <div id="address-suggestions" class="suggestions-list hidden"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lat">Latitude</label>
+                        <input type="number" step="any" id="lat" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lng">Longitude</label>
+                        <input type="number" step="any" id="lng" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Description</label>
+                        <textarea id="desc" required></textarea>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="is_paid">
+                        <label for="is_paid">Is Paid?</label>
+                    </div>
+                    <div id="price-group" class="form-group hidden">
+                        <label for="price">Price ($)</label>
+                        <input type="number" step="0.01" id="price" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="user_id">User ID (Demo)</label>
+                        <input type="number" id="user_id" value="1" required>
+                    </div>
+                    <button type="submit">Add Dispenser</button>
+                </form>
+            </div>
+
+            <div class="form-card">
+                <h2>Rate a Dispenser</h2>
+                <form id="add-rating-form">
+                    <div class="form-group">
+                        <label for="dispenser_id">Dispenser ID</label>
+                        <input type="number" id="dispenser_id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rating_user_id">User ID (Demo)</label>
+                        <input type="number" id="rating_user_id" value="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="score">Cleanliness (1-5)</label>
+                        <input type="number" id="score" min="1" max="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="review">Review</label>
+                        <textarea id="review" required></textarea>
+                    </div>
+                    <button type="submit">Submit Rating</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
